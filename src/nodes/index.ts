@@ -2,12 +2,11 @@ import type { NodeTypes } from '@xyflow/react';
 
 import { PositionLoggerNode } from './PositionLoggerNode';
 import { AppNode } from './types';
-import TextUpdaterNode from './TextUpdaterNode';
+import { PaymentInit } from './PaymentInit';
 
 export const nodeTypes = {
   'position-logger': PositionLoggerNode,
-  'textUpdater': TextUpdaterNode
-  // Add any of your custom nodes here!
+  'payment-init': PaymentInit,
 } satisfies NodeTypes;
 
 
@@ -27,10 +26,10 @@ export const initialNodes: AppNode[] = [
     data: { label: 'with React Flow' },
   },
   {
-    id: 'e',
-    type: 'textUpdater',
-    position: { x: 0, y: 400 },
-    data: {value: 123}
-  }
+    id: "1",
+    data: { amount: 10 },
+    position: { x: 300, y: 100 },
+    type: "payment-init"
+},
 ];
 

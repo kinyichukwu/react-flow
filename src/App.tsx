@@ -25,6 +25,7 @@ export default function App() {
 
   return (
     <ReactFlow
+   
       nodes={nodes}
       nodeTypes={nodeTypes}
       onNodesChange={onNodesChange}
