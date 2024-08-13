@@ -8,36 +8,31 @@ import {
   useNodesState,
   useEdgesState,
   type OnConnect,
+  Node,
+  Edge,
+  Connection,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-
-import { initialNodes, nodeTypes } from './nodes';
-import { initialEdges, edgeTypes } from './edges';
+import PaymentInit from './Workflow/PaymentProviderSelect';
+import { initialEdges, initialNodes } from './Workflow/Workflow.constants';
+import { ChakraProvider } from '@chakra-ui/react';
+import { Workflow } from './Workflow/Workflow';
 
 export default function App() {
-  const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect: OnConnect = useCallback(
-    (connection) => setEdges((edges) => addEdge(connection, edges)),
-    [setEdges]
-  );
+  
+
+  // const onConnect = useCallback((connection: Connection) => {
+
+  //   console.log(connection)
+  //   const edge = {...connection, animated: true, id: `${edges.length + 1}`,   }
+
+  //   setEdges(prevEdges => addEdge(prevEdges, edge))
+  // }, [])
 
   return (
-    <ReactFlow
-   
-      nodes={nodes}
-      nodeTypes={nodeTypes}
-      onNodesChange={onNodesChange}
-      edges={edges}
-      edgeTypes={edgeTypes}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      fitView
-    >
-      <Background color='ash' bgColor='lightgreen' />
-      <MiniMap   />
-      <Controls   />
-    </ReactFlow>
+    <ChakraProvider>
+<Workflow/>
+    </ChakraProvider>
   );
 }
